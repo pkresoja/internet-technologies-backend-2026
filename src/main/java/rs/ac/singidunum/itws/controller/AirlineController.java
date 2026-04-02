@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.singidunum.itws.entity.Airline;
-import rs.ac.singidunum.itws.repo.AirlineRepository;
 import rs.ac.singidunum.itws.service.AirlineService;
 
 import java.util.List;
