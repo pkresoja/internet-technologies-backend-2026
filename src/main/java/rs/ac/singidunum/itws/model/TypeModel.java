@@ -9,5 +9,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TypeModel {
     private Integer id;
-    private Integer name;
+    private String name;
 }

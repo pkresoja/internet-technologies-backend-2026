@@ -8,6 +8,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 import rs.ac.singidunum.itws.model.FlightModel;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,15 +19,18 @@ public class FlightService {
     private final RestClient client = RestClient.builder()
             .baseUrl("https://flight.pequla.com/api/flight")
             .defaultHeader("Accept", "application/json")
-            .defaultHeader("X-Name", "ITWS2025")
+            .defaultHeader("X-Name", "ITWS2026")
             .build();
 
     public List<FlightModel> getFlights() {
-        return client.get()
+        List<FlightModel> unsorted = client.get()
                 .uri("/list?type=departure")
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {
                 });
+
+        unsorted.sort(Comparator.comparing(FlightModel::getScheduledAt));
+        return unsorted;
     }
 
     public Optional<FlightModel> getFlightById(Integer id) {
