@@ -28,9 +28,10 @@ public class Ticket {
     @Column(name = "ticket_id")
     private Integer id;
 
-    @Column(nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
-    private Integer userId;
+    private User user;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "airline_id", nullable = false)
