@@ -9,6 +9,5 @@ import rs.ac.singidunum.itws.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    
     Optional<User> findByUsernameAndIsActiveTrue(String username);
 }
